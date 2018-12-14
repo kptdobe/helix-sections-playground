@@ -57,6 +57,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendi
 
 ---
 
+## Heading, paragraph and images
+
+This is another paragraph and image section, can we differentiate the rendering ?
+
+![helix-logo](./helix_logo.png)
+
+---
+
+## This is a heading and 2 images
+
+![helix-logo](./helix_logo.png)
+![helix-logo](./helix_logo.png)
+
+---
+
 ## Fourth section - list only
 
 * Sections with a list are special, they deserve a red background
