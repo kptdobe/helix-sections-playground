@@ -41,14 +41,15 @@ function pre(payload, action) {
     // "state machine"
     if (previous) {
 
-      // if 2 consecutive paragraphs contain an image and a paragraph, put them on the same "row"
+      // if 2 consecutive paragraphs contain an (image and a paragraph) OR (2 images), put them on the same "row"
       if (
         !node.className.includes('index0') && 
-        node.className.includes('has-paragraph') && 
+        (node.className.includes('has-paragraph') || node.className.includes('nb-image-2')) &&
         node.className.includes('has-image') && 
         (previous.className.includes('has-paragraph') || previous.className.includes('nb-image-2')) &&
         previous.className.includes('has-image') &&
         !previous.className.includes('left')) {
+
           previous.classList.add('left');
           node.classList.add('right');
 
