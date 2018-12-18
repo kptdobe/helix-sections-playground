@@ -85,3 +85,9 @@ This is another paragraph and image section, can we differentiate the rendering 
 * Carousel item 2
 * Carousel item 3
 * Carousel item 4
+
+---
+
+* ![helix-h1](/dist/h1.png)
+* ![helix-h2](/dist/h2.png)
+* ![helix-h3](/dist/h3.jpg)
