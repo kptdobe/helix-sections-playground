@@ -72,9 +72,16 @@ This is another paragraph and image section, can we differentiate the rendering 
 
 ---
 
-## Fourth section - list only
+## Fourth section - title and list only
 
 * Sections with a list are special, they deserve a red background
 * Explain something
 * Explain something else
 * Finally the section may be rendered differently
+
+---
+
+* List only, no title = carousel
+* Carousel item 2
+* Carousel item 3
+* Carousel item 4

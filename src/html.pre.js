@@ -35,17 +35,20 @@ function pre(payload, action) {
 
   c.sections.forEach((element, index) => {
     const transformer = new VDOM(element, action.secrets);
-    const node = transformer.process();
-    node.classList.add(`section index${index} ${element.types.join(' ')}`);
+    let node = transformer.process();
+
+    const types = element.types.slice();
+    types.push(`index${index}`);
+    types.push(parity ? 'even' : 'odd');
 
     // "state machine"
     if (previous) {
 
       // if 2 consecutive paragraphs contain an (image and a paragraph) OR (2 images), put them on the same "row"
       if (
-        !node.className.includes('index0') && 
-        (node.className.includes('has-paragraph') || node.className.includes('nb-image-2')) &&
-        node.className.includes('has-image') && 
+        !types.includes('index0') && 
+        (types.includes('has-paragraph') || types.includes('nb-image-2')) &&
+        types.includes('has-image') && 
         (previous.className.includes('has-paragraph') || previous.className.includes('nb-image-2')) &&
         previous.className.includes('has-image') &&
         !previous.className.includes('left')) {
@@ -55,10 +58,36 @@ function pre(payload, action) {
 
           // cancel parity
           parity = !parity;
+      } else {
+        if (
+          types.includes('is-list-only') &&
+          !types.includes('has-heading')) {
+
+          //node.classList.add('carousel');
+
+          const carousel = node;
+
+          node = transformer.getDocument().createElement('div');
+          node.classList.add('carousel');
+
+          node.innerHTML = carousel.outerHTML;
+
+          const controlDiv = transformer.getDocument().createElement('div');
+          controlDiv.classList.add('carousel-control');
+          controlDiv.innerHTML = '<i class ="fa fa-angle-left fa-2x" id="carousel-l"></i><i class = "fa fa-angle-right fa-2x" id="carousel-r"></i>';
+
+          node.appendChild(controlDiv);
+        }
       }
+
     }
 
-    node.classList.add(`${parity ? 'even' : 'odd'}`);
+
+    types.push('section');
+    types.forEach(t => {
+      node.classList.add(t);
+    });
+
     parity = !parity;
 
     previous = node;
