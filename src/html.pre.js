@@ -39,7 +39,6 @@ function pre(payload, action) {
 
     const types = element.types.slice();
     types.push(`index${index}`);
-    types.push(parity ? 'even' : 'odd');
 
     // "state machine"
     if (previous) {
@@ -60,6 +59,7 @@ function pre(payload, action) {
           parity = !parity;
       } else {
         if (
+          // if list only and no heading -> carousel
           types.includes('is-list-only') &&
           !types.includes('has-heading')) {
 
@@ -82,8 +82,9 @@ function pre(payload, action) {
 
     }
 
-
+    types.push(parity ? 'even' : 'odd');
     types.push('section');
+    // add types as css class
     types.forEach(t => {
       node.classList.add(t);
     });
