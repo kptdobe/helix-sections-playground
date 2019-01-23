@@ -14,7 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-![helix-logo](./helix_logo.png)
+![banner1](/content/images/banner1.jpg)
 
 # Helix - sections
 
@@ -33,7 +33,7 @@ Odd sections have a grey background while even sections have a blue background.
 
 This is a paragraph that is illustrated with the image above.
 
-![helix-logo](./helix_logo.png)
+![banner1](/content/images/banner1.jpg)
 
 ---
 
@@ -41,7 +41,7 @@ This is a paragraph that is illustrated with the image above.
 
 This is another paragraph and image section, can we differentiate the rendering ?
 
-![helix-logo](./helix_logo.png)
+![banner2](/content/images/banner2.jpg)
 
 ---
 
@@ -88,6 +88,6 @@ This is another paragraph and image section, can we differentiate the rendering 
 
 ---
 
-* ![helix-h1](/dist/h1.png)
-* ![helix-h2](/dist/h2.png)
-* ![helix-h3](/dist/h3.jpg)
+* ![car 1](/content/images/car1.png)
+* ![car 2](/content/images/car2.png)
+* ![car 3](/content/images/car3.png)
