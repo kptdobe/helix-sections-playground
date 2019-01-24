@@ -1,0 +1,23 @@
+{
+  "name": "helix-sections-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "js-beautify": "^1.8.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kptdobe/helix-sections-playground.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kptdobe/helix-sections-playground/issues"
+  },
+  "homepage": "https://github.com/kptdobe/helix-sections-playground#readme"
+}
