@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "js-beautify": "^1.8.9"
+    "js-beautify": "^1.8.9",
+    "remark-stringify": "^6.0.4"
   },
   "devDependencies": {},
   "scripts": {

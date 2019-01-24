@@ -130,3 +130,9 @@ body {
 .fa-angle-right:before {
     content: ">";
 }
+
+.layout-section {
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 5px
+}
