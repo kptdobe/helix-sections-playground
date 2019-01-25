@@ -30,9 +30,14 @@
 <div data-sly-list="${content.sectionsLayouts}">
   <section class="layout-section">
     <h1>Section ${item.index}</h1>
-    <span>Computed types: <code>${item.types}</code></span><br>
+    
     <span>Markdown:</span><br>
     <pre class="language-markdown"><code class="language-markdown">${item.md}</code></pre>
+
+    <span>Computed types: <code>${item.types}</code></span><br>
+    <span>Computed types per item:</span>
+    <ol data-sly-list.childType="${item.childrenTypes}"><li><code>${childType}</code></li></ol><br>
+    
     <span>Markup:</span><br>
     <pre class="language-markup"><code class="language-markup">${item.html}</code></pre>
   </section>

@@ -33,11 +33,11 @@ function pre(payload, action) {
   let previous;
   let parity = false;
 
-  c.sections.forEach((element, index) => {
+  c.sections.forEach((section, index) => {
     
-    if (element.childrenTypes) {
-      element.children.forEach(function (child, childIndex) {
-        const childrenTypes = element.childrenTypes[childIndex] || [];
+    if (section.childrenTypes) {
+      section.children.forEach(function (child, childIndex) {
+        const childrenTypes = section.childrenTypes[childIndex] || [];
         child.data = Object.assign({
             hProperties: {
               className: childrenTypes
@@ -46,10 +46,10 @@ function pre(payload, action) {
       });
     }
 
-    const transformer = new VDOM(element, action.secrets);
+    const transformer = new VDOM(section, action.secrets);
     let node = transformer.process();
 
-    const types = element.types.slice();
+    const types = section.types.slice();
     types.push(`index${index}`);
 
     // "state machine"

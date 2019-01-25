@@ -34,9 +34,10 @@ function pre(payload, action) {
   c.sectionsDocuments.forEach((section, index) => {
     c.sectionsLayouts.push({
       index: index,
-      types: section.className,
+      types: c.sections[index].types,
       md: new stringify.Compiler().visit(c.sections[index]).replace(/</g, '&#60;'),
-      html: beautifyhtml(section.outerHTML).replace(/</g, '&#60;')
+      html: beautifyhtml(section.outerHTML).replace(/</g, '&#60;'),
+      childrenTypes: c.sections[index].childrenTypes || []
     });
   });
 }
