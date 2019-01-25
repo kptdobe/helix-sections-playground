@@ -34,6 +34,18 @@ function pre(payload, action) {
   let parity = false;
 
   c.sections.forEach((element, index) => {
+    
+    if (element.childrenTypes) {
+      element.children.forEach(function (child, childIndex) {
+        const childrenTypes = element.childrenTypes[childIndex] || [];
+        child.data = Object.assign({
+            hProperties: {
+              className: childrenTypes
+            }
+          }, child.data || {});
+      });
+    }
+
     const transformer = new VDOM(element, action.secrets);
     let node = transformer.process();
 

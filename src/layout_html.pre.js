@@ -35,7 +35,7 @@ function pre(payload, action) {
     c.sectionsLayouts.push({
       index: index,
       types: section.className,
-      md: new stringify.Compiler().visit(c.sections[index]),
+      md: new stringify.Compiler().visit(c.sections[index]).replace(/</g, '&#60;'),
       html: beautifyhtml(section.outerHTML).replace(/</g, '&#60;')
     });
   });
