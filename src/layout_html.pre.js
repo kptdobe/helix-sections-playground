@@ -16,10 +16,9 @@
  *
  */
 
-const VDOM = require('@adobe/helix-pipeline').utils.vdom;
 const htmlpre = require('./html.pre.js');
 const beautifyhtml = require('js-beautify').html;
-const stringify = require('remark-stringify')
+const stringify = require('remark-stringify');
 
 /**
  * The 'pre' function that is executed before the HTML is rendered
@@ -30,14 +29,13 @@ function pre(payload, action) {
   htmlpre.pre(payload, action);
   const c = payload.content;
   c.sectionsLayouts = [];
-  
+
   c.sectionsDocuments.forEach((section, index) => {
     c.sectionsLayouts.push({
       index: index,
       types: c.sections[index].types,
       md: new stringify.Compiler().visit(c.sections[index]).replace(/</g, '&#60;'),
-      html: beautifyhtml(section.outerHTML).replace(/</g, '&#60;'),
-      childrenTypes: c.sections[index].childrenTypes || []
+      html: beautifyhtml(section.outerHTML).replace(/</g, '&#60;')
     });
   });
 }

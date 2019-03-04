@@ -22,7 +22,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="/dist/favicon.ico">
     <title>${content.title}</title>
     <link href="/dist/prism.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/dist/style.css"/>
+    <link rel="stylesheet" href="/dist/layout.css"/>
 
 </head>
 <body>
@@ -35,8 +35,6 @@
     <pre class="language-markdown"><code class="language-markdown">${item.md}</code></pre>
 
     <span>Computed types: <code>${item.types}</code></span><br>
-    <span>Computed types per item:</span>
-    <ol data-sly-list.childType="${item.childrenTypes}"><li><code>${childType}</code></li></ol><br>
     
     <span>Markup:</span><br>
     <pre class="language-markup"><code class="language-markup">${item.html}</code></pre>
