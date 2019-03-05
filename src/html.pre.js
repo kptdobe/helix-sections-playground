@@ -17,6 +17,7 @@
  */
 
 const VDOM = require('@adobe/helix-pipeline').utils.vdom;
+const visit = require('unist-util-visit');
 
 /**
  * The 'pre' function that is executed before the HTML is rendered
@@ -35,19 +36,20 @@ function pre(payload, action) {
 
   c.sections.forEach((section, index) => {
     
-    if (section.childrenTypes) {
-      section.children.forEach(function (child, childIndex) {
-        const childrenTypes = section.childrenTypes[childIndex] || [];
+
+    visit(section, (child) => {
+      if (child && child.data && child.data.types) {
+        // assign the child types to the child className so that they get rendered
         child.data = Object.assign({
-            hProperties: {
-              className: childrenTypes
-            }
-          }, child.data || {});
-      });
-    }
+          hProperties: {
+            className: child.data.types
+          }
+        }, child.data || {});
+      }
+    });
 
     const transformer = new VDOM(section, action.secrets);
-    let node = transformer.process();
+    let node = transformer.getNode('section');
 
     const types = section.types.slice();
     types.push(`index${index}`);
