@@ -42,7 +42,7 @@ body {
 }
 
 /* text image paragraph */
-.has-paragraph.has-image p {
+.has-image p {
     display: inline-block;
     vertical-align: top;
     width: 100%;

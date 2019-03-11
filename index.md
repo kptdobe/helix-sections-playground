@@ -14,6 +14,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
+
 ![banner1](/content/images/banner1.jpg)
 
 # Helix - sections
@@ -65,13 +66,6 @@ This is another paragraph and image section, can we differentiate the rendering 
 
 ---
 
-## This is a heading and 2 images
-
-![helix-logo](./helix_logo.png)
-![helix-logo](./helix_logo.png)
-
----
-
 ## Fourth section - title and list only
 
 * Sections with a list are special, they deserve a red background
@@ -91,3 +85,16 @@ This is another paragraph and image section, can we differentiate the rendering 
 * ![car 1](/content/images/car1.png)
 * ![car 2](/content/images/car2.png)
 * ![car 3](/content/images/car3.png)
+
+---
+
+## This is a heading and 2 images
+
+![helix-logo](./helix_logo.png)
+![helix-logo](./helix_logo.png)
+
+---
+
+This is a paragraph with a [link](/index.html)!
+
+---
