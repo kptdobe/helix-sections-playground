@@ -3,10 +3,15 @@ version: 1
 definitions:
   defaults:
     # default repository. set to git remote repository before deployment
-    - &defaultRepo "http://localhost/local/default.git"
+    - &defaultRepo "https://github.com/kptdobe/helix-sections-playground.git#master"
+
+  strains:
+    base:
+      &basestrain
+      code: *defaultRepo
+      content: *defaultRepo
+      static: *defaultRepo
 
 strains:
-  default:
-    code: *defaultRepo
-    content: *defaultRepo
-    static: *defaultRepo
+  - name: default
+    <<: *basestrain
