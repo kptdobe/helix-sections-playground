@@ -15,4 +15,3 @@ definitions:
 strains:
   - name: default
     <<: *basestrain
-    package: acapt/github-com--kptdobe--helix-sections-playground--master-dirty
