@@ -17,6 +17,8 @@
  */
 
 const htmlpre = require('./html.pre.js');
+const jquery = require('jquery');
+
 const beautifyhtml = require('js-beautify').html;
 const stringify = require('remark-stringify');
 
@@ -25,16 +27,22 @@ const stringify = require('remark-stringify');
  * @param payload The current payload of processing pipeline
  * @param payload.content The content
  */
-function pre(payload, action) {
-  htmlpre.pre(payload, action);
-  const c = payload.content;
-  c.sectionsLayouts = [];
+function pre(context) {
+  htmlpre.pre(context);
 
-  c.sectionsDocuments.forEach((section, index) => {
-    c.sectionsLayouts.push({
+  const { content } = context;
+  const { document } = content;
+  const $ = jquery(document.defaultView);
+
+  const $sections = $(document.body).children('div');
+
+  content.sectionsLayouts = [];
+
+  $sections.each((index, section) => {
+    content.sectionsLayouts.push({
       index: index,
-      types: c.sections[index].types,
-      md: new stringify.Compiler().visit(c.sections[index]).replace(/</g, '&#60;'),
+      types: section.dataset.hlxTypes,
+      //md: new stringify.Compiler().visit(c.sections[index]).replace(/</g, '&#60;'),
       html: beautifyhtml(section.outerHTML).replace(/</g, '&#60;')
     });
   });

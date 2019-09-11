@@ -16,47 +16,35 @@
  *
  */
 
-const VDOM = require('@adobe/helix-pipeline').utils.vdom;
-const visit = require('unist-util-visit');
+const jquery = require('jquery');
 
 /**
  * The 'pre' function that is executed before the HTML is rendered
  * @param payload The current payload of processing pipeline
  * @param payload.content The content
  */
-function pre(payload, action) {
-  payload.content.time = `${new Date()}`;
+function pre(context, action) {
+  context.content.time = `${new Date()}`;
+
+  const { document } = context.content;
+  const $ = jquery(document.defaultView);
 
   // convert sections to vdoms
-  const c = payload.content;
-  c.sectionsDocuments = [];
+  // const c = payload.content;
+  // c.sectionsDocuments = [];
 
   let previous;
   let parity = false;
 
-  c.sections.forEach((section, index) => {
+  const $sections = $(document.body).children('div');
+
+  $sections.each((index, section) => {
     
+    const types = (section.dataset.hlxTypes || '').split(' ');
 
-    visit(section, (child) => {
-      if (child && child.data && child.data.types) {
-        // assign the child types to the child className so that they get rendered
-        child.data = Object.assign({
-          hProperties: {
-            className: child.data.types
-          }
-        }, child.data || {});
-      }
-    });
-
-    const transformer = new VDOM(section, action.secrets);
-    let node = transformer.getNode('section');
-
-    const types = section.types.slice();
     types.push(`index${index}`);
 
-    // "state machine"
     if (previous) {
-
       // if 2 consecutive paragraphs contain an (image and a paragraph) OR (2 images), put them on the same "row"
       if (
         !types.includes('index0') && 
@@ -67,7 +55,7 @@ function pre(payload, action) {
         !previous.className.includes('left')) {
 
           previous.classList.add('left');
-          node.classList.add('right');
+          section.classList.add('right');
 
           // cancel parity
           parity = !parity;
@@ -77,20 +65,18 @@ function pre(payload, action) {
           types.includes('is-list-only') &&
           !types.includes('has-heading')) {
 
-          //node.classList.add('carousel');
+          // const carousel = section;
 
-          const carousel = node;
+          // const node = document.createElement('div');
+          // node.classList.add('carousel');
 
-          node = transformer.getDocument().createElement('div');
-          node.classList.add('carousel');
+          // node.innerHTML = carousel.outerHTML;
 
-          node.innerHTML = carousel.outerHTML;
+          // const controlDiv = transformer.getDocument().createElement('div');
+          // controlDiv.classList.add('carousel-control');
+          // controlDiv.innerHTML = '<i class ="fa fa-angle-left fa-2x" id="carousel-l"></i><i class = "fa fa-angle-right fa-2x" id="carousel-r"></i>';
 
-          const controlDiv = transformer.getDocument().createElement('div');
-          controlDiv.classList.add('carousel-control');
-          controlDiv.innerHTML = '<i class ="fa fa-angle-left fa-2x" id="carousel-l"></i><i class = "fa fa-angle-right fa-2x" id="carousel-r"></i>';
-
-          node.appendChild(controlDiv);
+          // node.appendChild(section.parent);
         }
       }
 
@@ -100,15 +86,16 @@ function pre(payload, action) {
     types.push('section');
     // add types as css class
     types.forEach(t => {
-      node.classList.add(t);
+      section.classList.add(t);
     });
+
+    section.dataset.hlxTypes = types;
 
     parity = !parity;
 
-    previous = node;
-    c.sectionsDocuments.push(node);
-  });
+    previous = section;
 
+  });
 }
 
 module.exports.pre = pre;
