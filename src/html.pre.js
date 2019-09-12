@@ -40,7 +40,7 @@ function pre(context, action) {
 
   $sections.each((index, section) => {
     
-    const types = (section.dataset.hlxTypes || '').split(' ');
+    const types = section.dataset.hlxTypes && '' != section.dataset.hlxTypes ? section.dataset.hlxTypes.split(' ') : [];
 
     types.push(`index${index}`);
 
@@ -48,9 +48,9 @@ function pre(context, action) {
       // if 2 consecutive paragraphs contain an (image and a paragraph) OR (2 images), put them on the same "row"
       if (
         !types.includes('index0') && 
-        (types.includes('has-paragraph') || types.includes('nb-image-2')) &&
+        (types.includes('has-text') || types.includes('nb-image-2')) &&
         types.includes('has-image') && 
-        (previous.className.includes('has-paragraph') || previous.className.includes('nb-image-2')) &&
+        (previous.className.includes('has-text') || previous.className.includes('nb-image-2')) &&
         previous.className.includes('has-image') &&
         !previous.className.includes('left')) {
 
