@@ -18,19 +18,23 @@
 <html>
 <body>
 
-    <esi:include src="http://www.example.com/ad.html"/> 
-    <esi:remove> 
-        <a href="http://www.example.com">www.example.com/ad.html exists!</a>
-    </esi:remove>
+    <div class="esi-here">
+        <esi:include src="/t.html"/> 
+        <esi:remove> 
+            <a href="/t.html">/t.html exists!</a>
+        </esi:remove>
+    </div>
 
     <br>
     <br>
     <br>
 
-    <esi:include src="/doesnotexist.html"/> 
-    <esi:remove> 
-        <b>/doesnotexist.html does not exist!</b>
-    </esi:remove>
+    <div class="esi-here">
+        <esi:include src="/doesnotexist.html"/> 
+        <esi:remove> 
+            <b>/doesnotexist.html does not exist!</b>
+        </esi:remove>
+    </div>
 
 
 

@@ -15,4 +15,4 @@ definitions:
 strains:
   - name: default
     <<: *basestrain
-    package: acapt/d9a66d9790c4077ed1a39b133d704667e582fe09
+    package: acapt/9be695fce9adbca5342efbac55b9d5d132a864c9
