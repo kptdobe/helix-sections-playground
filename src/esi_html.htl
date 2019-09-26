@@ -16,6 +16,14 @@
   ~ limitations under the License.
   -->
 <html>
+    <head>
+        <style>
+        .esi-here {
+            max-height: 100px;
+            overflow: hidden;
+        }
+        </style>
+    </head>
 <body>
 
     <div class="esi-here">
@@ -36,6 +44,16 @@
         </esi:remove>
     </div>
 
+    <div class="esi-here">
+        <esi:include src="/t.html"/> 
+    </div>
+
+    <div class="esi-here">
+        <esi:include src="/doesnotexist.html"/> 
+        <esi:remove> 
+            <b>/doesnotexist.html does not exist!</b>
+        </esi:remove>
+    </div>
 
 
 </body>
