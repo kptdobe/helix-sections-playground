@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "@adobe/helix-pipeline": "^6.0.2",
-    "@adobe/openwhisk-action-utils": "git+https://github.com/adobe/openwhisk-action-utils.git#92a74787df1195a91bdee59e07016a6bd2732023",
     "jquery": "^3.4.1",
     "js-beautify": "^1.8.9",
     "remark-stringify": "^6.0.4",
