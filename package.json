@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-beautify": "^1.8.9",
     "remark-stringify": "^6.0.4",
     "unist-util-visit": "^1.4.0"
